@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Inv_StackModelStoreContainer" CdmEntityContainer="Login_Entities1">
+    <EntitySetMapping Name="tbl_UserDetails">
+      <EntityTypeMapping TypeName="Inv_StackModel.tbl_UserDetails">
+        <MappingFragment StoreEntitySet="tbl_UserDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contact_no" ColumnName="Contact_no" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="About_Yourself" ColumnName="About_Yourself" />
+          <ScalarProperty Name="Keyskills" ColumnName="Keyskills" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Entry_By" ColumnName="Entry_By" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Login" FunctionName="Inv_StackModel.Store.Login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Inv_StackModel.Login_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="About_Yourself" ColumnName="About_Yourself" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Keyskills" ColumnName="Keyskills" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

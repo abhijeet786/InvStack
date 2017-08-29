@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div class="content" ng-controller="Question">
+    <div class="container">
+        <div class="content-grids">
+            <div class="col-md-8 content-main">
+                <div class="col-md-8 content-grid-info">
+                    <div class="col-md-4">
+                        <label>Title</label>
+
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" ng-model="Ques.Title" name="Title" />
+                    </div>
+                </div>
+                <div class="col-md-8 content-grid-info">
+                    <div class="col-md-4">
+                        <label>Description</label>
+
+                    </div>
+                    <div class="col-md-8">
+                        <textarea name="Description" ng-model="Ques.Question"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <label>What have you done so far </label>
+
+                    </div>
+                    <div class="col-md-12">
+                        <textarea runat="server" ng-model="Ques.Question_Description" id="txtQuestion"></textarea>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <input type="button" value="Submit" ng-click="SubmitQues()">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

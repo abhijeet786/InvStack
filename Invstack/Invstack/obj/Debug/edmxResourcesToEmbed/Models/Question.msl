@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Inv_StackModel1StoreContainer" CdmEntityContainer="Inv_StackEntities3">
+    <EntitySetMapping Name="tbl_Questions">
+      <EntityTypeMapping TypeName="Inv_StackModel1.tbl_Questions">
+        <MappingFragment StoreEntitySet="tbl_Questions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Question_Description" ColumnName="Question_Description" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="Entry_By" ColumnName="Entry_By" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Add_question" FunctionName="Inv_StackModel1.Store.Add_question" />
+  </EntityContainerMapping>
+</Mapping>

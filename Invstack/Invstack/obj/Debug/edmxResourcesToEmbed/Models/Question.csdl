@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Inv_StackModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Questions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="Int32" />
+    <Property Name="Emp_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Question" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Question_Description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="language" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Entry_By" Type="Int32" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="Inv_StackEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Questions" EntityType="Self.tbl_Questions" />
+    <FunctionImport Name="Add_question">
+      <Parameter Name="User_id" Mode="In" Type="Int32" />
+      <Parameter Name="Emp_id" Mode="In" Type="String" />
+      <Parameter Name="Question" Mode="In" Type="String" />
+      <Parameter Name="Question_Description" Mode="In" Type="String" />
+      <Parameter Name="language" Mode="In" Type="String" />
+      <Parameter Name="Entry_By" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

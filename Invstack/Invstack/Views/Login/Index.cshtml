@@ -1,0 +1,72 @@
+﻿@model Invstack.Models.tbl_UserDetails
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Clean Login Form a Flat Responsive Widget Template :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Clean Login Form Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+
+    <!-- css files -->
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- /css files -->
+    <!-- online fonts -->
+    <link href="//fonts.googleapis.com/css?family=Sirin+Stencil" rel="stylesheet">
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- online fonts -->
+</head>
+<body ng-app="myapp" ng-controller="Login">
+    <div class="container demo-1">
+        <div class="content">
+            <div id="large-header" class="large-header">
+                <h1>Inv Stack{{2+2}}</h1>
+                <div class="main-agileits">
+                    <!--form-stars-here-->
+                    <div class="form-w3-agile">
+                        <h2>login Now</h2>
+                        <form>
+                            <div class="form-sub-w3">
+                                @*<input type="text" name="Username" placeholder="Username " required="" />*@
+                                @Html.TextBoxFor(l => l.Employee_Id, new { ng_Model = "User.Employee_Id", placeholder = "Employee Id" })
+                                <div class="icon-w3">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Employee_Id)
+                            <div class="form-sub-w3">
+                                @Html.TextBoxFor(l => l.Password, new { ng_Model = "User.Password", placeholder = "Password" })
+                                <div class="icon-w3">
+                                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Password)
+                            <p class="p-bottom-w3ls">Forgot Password?<a class href="#">  Click here</a></p>
+                            <p class="p-bottom-w3ls1">New User?<a class href="#">  Register here</a></p>
+                            <div class="clear"></div>
+                            <div class="submit-w3l">
+                                <input type="button" value="Login" ng-click="Login()">
+                            </div>
+                        </form>
+
+                    </div>
+                    <!--//form-ends-here-->
+                </div><!-- copyright -->
+                <div class="copyright w3-agile">
+                    <p> © 2017 InvStack . All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">Invetech Solutions</a></p>
+                </div>
+                <!-- //copyright -->
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/scripts")
+    @Scripts.Render("~/bundles/angular")
+</body>
+</html>
+

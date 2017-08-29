@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Inv_StackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Articles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="Emp_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="200" />
+          <Property Name="Language" Type="varchar" MaxLength="50" />
+          <Property Name="Post" Type="varchar" MaxLength="5000" />
+          <Property Name="Entry_by" Type="varchar" MaxLength="50" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Post_ID" Type="int" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="Emp_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="varchar" MaxLength="1000" />
+          <Property Name="Entry_by" Type="varchar" MaxLength="50" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Questions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="Question" Type="varchar" MaxLength="1000" />
+          <Property Name="Question_Description" Type="varchar" MaxLength="5000" />
+          <Property Name="language" Type="varchar" MaxLength="100" />
+          <Property Name="Entry_By" Type="int" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_UserDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Contact_no" Type="varchar" MaxLength="50" />
+          <Property Name="Designation" Type="varchar" MaxLength="50" />
+          <Property Name="About_Yourself" Type="varchar" MaxLength="500" />
+          <Property Name="Keyskills" Type="varchar" MaxLength="200" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Entry_By" Type="varchar" MaxLength="50" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__tbl_Artic__User___4F7CD00D">
+          <End Role="tbl_UserDetails" Type="Self.tbl_UserDetails" Multiplicity="0..1" />
+          <End Role="tbl_Articles" Type="Self.tbl_Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Articles">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Quest__User___2D27B809">
+          <End Role="tbl_UserDetails" Type="Self.tbl_UserDetails" Multiplicity="0..1" />
+          <End Role="tbl_Questions" Type="Self.tbl_Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Questions">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Post">
+          <End Role="tbl_Articles" Type="Self.tbl_Articles" Multiplicity="0..1" />
+          <End Role="tbl_Comments" Type="Self.tbl_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Articles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Comments">
+              <PropertyRef Name="Post_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_User_ID">
+          <End Role="tbl_UserDetails" Type="Self.tbl_UserDetails" Multiplicity="0..1" />
+          <End Role="tbl_Comments" Type="Self.tbl_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Comments">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Add_question" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User_id" Type="int" Mode="In" />
+          <Parameter Name="Emp_id" Type="varchar" Mode="In" />
+          <Parameter Name="Title" Type="varchar" Mode="In" />
+          <Parameter Name="Question" Type="varchar" Mode="In" />
+          <Parameter Name="Question_Description" Type="varchar" Mode="In" />
+          <Parameter Name="language" Type="varchar" Mode="In" />
+          <Parameter Name="Entry_By" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_Id" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Inv_StackModelStoreContainer">
+          <EntitySet Name="tbl_Articles" EntityType="Self.tbl_Articles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Comments" EntityType="Self.tbl_Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Questions" EntityType="Self.tbl_Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserDetails" EntityType="Self.tbl_UserDetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbl_Artic__User___4F7CD00D" Association="Self.FK__tbl_Artic__User___4F7CD00D">
+            <End Role="tbl_UserDetails" EntitySet="tbl_UserDetails" />
+            <End Role="tbl_Articles" EntitySet="tbl_Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Quest__User___2D27B809" Association="Self.FK__tbl_Quest__User___2D27B809">
+            <End Role="tbl_UserDetails" EntitySet="tbl_UserDetails" />
+            <End Role="tbl_Questions" EntitySet="tbl_Questions" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Post" Association="Self.Fk_Post">
+            <End Role="tbl_Articles" EntitySet="tbl_Articles" />
+            <End Role="tbl_Comments" EntitySet="tbl_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_User_ID" Association="Self.Fk_User_ID">
+            <End Role="tbl_UserDetails" EntitySet="tbl_UserDetails" />
+            <End Role="tbl_Comments" EntitySet="tbl_Comments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Inv_StackModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Articles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="Emp_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Post" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Entry_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_UserDetails" Relationship="Self.FK__tbl_Artic__User___4F7CD00D" FromRole="tbl_Articles" ToRole="tbl_UserDetails" />
+          <NavigationProperty Name="tbl_Comments" Relationship="Self.Fk_Post" FromRole="tbl_Articles" ToRole="tbl_Comments" />
+        </EntityType>
+        <EntityType Name="tbl_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Post_ID" Type="Int32" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="Emp_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Entry_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Articles" Relationship="Self.Fk_Post" FromRole="tbl_Comments" ToRole="tbl_Articles" />
+          <NavigationProperty Name="tbl_UserDetails" Relationship="Self.Fk_User_ID" FromRole="tbl_Comments" ToRole="tbl_UserDetails" />
+        </EntityType>
+        <EntityType Name="tbl_Questions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" />
+          <Property Name="Emp_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Question" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Question_Description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="language" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Entry_By" Type="Int32" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_UserDetails" Relationship="Self.FK__tbl_Quest__User___2D27B809" FromRole="tbl_Questions" ToRole="tbl_UserDetails" />
+        </EntityType>
+        <EntityType Name="tbl_UserDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="About_Yourself" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Keyskills" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Entry_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Articles" Relationship="Self.FK__tbl_Artic__User___4F7CD00D" FromRole="tbl_UserDetails" ToRole="tbl_Articles" />
+          <NavigationProperty Name="tbl_Comments" Relationship="Self.Fk_User_ID" FromRole="tbl_UserDetails" ToRole="tbl_Comments" />
+          <NavigationProperty Name="tbl_Questions" Relationship="Self.FK__tbl_Quest__User___2D27B809" FromRole="tbl_UserDetails" ToRole="tbl_Questions" />
+        </EntityType>
+        <Association Name="FK__tbl_Artic__User___4F7CD00D">
+          <End Role="tbl_UserDetails" Type="Self.tbl_UserDetails" Multiplicity="0..1" />
+          <End Role="tbl_Articles" Type="Self.tbl_Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Articles">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Post">
+          <End Role="tbl_Articles" Type="Self.tbl_Articles" Multiplicity="0..1" />
+          <End Role="tbl_Comments" Type="Self.tbl_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Articles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Comments">
+              <PropertyRef Name="Post_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_User_ID">
+          <End Role="tbl_UserDetails" Type="Self.tbl_UserDetails" Multiplicity="0..1" />
+          <End Role="tbl_Comments" Type="Self.tbl_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Comments">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Quest__User___2D27B809">
+          <End Role="tbl_UserDetails" Type="Self.tbl_UserDetails" Multiplicity="0..1" />
+          <End Role="tbl_Questions" Type="Self.tbl_Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Questions">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StackEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Articles" EntityType="Self.tbl_Articles" />
+          <EntitySet Name="tbl_Comments" EntityType="Self.tbl_Comments" />
+          <EntitySet Name="tbl_Questions" EntityType="Self.tbl_Questions" />
+          <EntitySet Name="tbl_UserDetails" EntityType="Self.tbl_UserDetails" />
+          <AssociationSet Name="FK__tbl_Artic__User___4F7CD00D" Association="Self.FK__tbl_Artic__User___4F7CD00D">
+            <End Role="tbl_UserDetails" EntitySet="tbl_UserDetails" />
+            <End Role="tbl_Articles" EntitySet="tbl_Articles" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Post" Association="Self.Fk_Post">
+            <End Role="tbl_Articles" EntitySet="tbl_Articles" />
+            <End Role="tbl_Comments" EntitySet="tbl_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_User_ID" Association="Self.Fk_User_ID">
+            <End Role="tbl_UserDetails" EntitySet="tbl_UserDetails" />
+            <End Role="tbl_Comments" EntitySet="tbl_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Quest__User___2D27B809" Association="Self.FK__tbl_Quest__User___2D27B809">
+            <End Role="tbl_UserDetails" EntitySet="tbl_UserDetails" />
+            <End Role="tbl_Questions" EntitySet="tbl_Questions" />
+          </AssociationSet>
+          <FunctionImport Name="Add_question">
+            <Parameter Name="User_id" Mode="In" Type="Int32" />
+            <Parameter Name="Emp_id" Mode="In" Type="String" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Question" Mode="In" Type="String" />
+            <Parameter Name="Question_Description" Mode="In" Type="String" />
+            <Parameter Name="language" Mode="In" Type="String" />
+            <Parameter Name="Entry_By" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Login" ReturnType="Collection(Inv_StackModel.Login_Result)">
+            <Parameter Name="Employee_Id" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Login_Result">
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="About_Yourself" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Keyskills" Nullable="true" MaxLength="200" />
+          <Property Type="Binary" Name="Image" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Inv_StackModelStoreContainer" CdmEntityContainer="StackEntities">
+          <EntitySetMapping Name="tbl_Articles">
+            <EntityTypeMapping TypeName="Inv_StackModel.tbl_Articles">
+              <MappingFragment StoreEntitySet="tbl_Articles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="Entry_by" ColumnName="Entry_by" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Comments">
+            <EntityTypeMapping TypeName="Inv_StackModel.tbl_Comments">
+              <MappingFragment StoreEntitySet="tbl_Comments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Entry_by" ColumnName="Entry_by" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Questions">
+            <EntityTypeMapping TypeName="Inv_StackModel.tbl_Questions">
+              <MappingFragment StoreEntitySet="tbl_Questions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Question_Description" ColumnName="Question_Description" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="Entry_By" ColumnName="Entry_By" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserDetails">
+            <EntityTypeMapping TypeName="Inv_StackModel.tbl_UserDetails">
+              <MappingFragment StoreEntitySet="tbl_UserDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact_no" ColumnName="Contact_no" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="About_Yourself" ColumnName="About_Yourself" />
+                <ScalarProperty Name="Keyskills" ColumnName="Keyskills" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Entry_By" ColumnName="Entry_By" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Add_question" FunctionName="Inv_StackModel.Store.Add_question" />
+          <FunctionImportMapping FunctionImportName="Login" FunctionName="Inv_StackModel.Store.Login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Inv_StackModel.Login_Result">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="About_Yourself" ColumnName="About_Yourself" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Keyskills" ColumnName="Keyskills" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Inv_StackModelStoreContainer" CdmEntityContainer="Inv_StackEntities">
+    <EntitySetMapping Name="tbl_Articles">
+      <EntityTypeMapping TypeName="Inv_StackModel.tbl_Articles">
+        <MappingFragment StoreEntitySet="tbl_Articles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Entry_by" ColumnName="Entry_by" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Comments">
+      <EntityTypeMapping TypeName="Inv_StackModel.tbl_Comments">
+        <MappingFragment StoreEntitySet="tbl_Comments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Entry_by" ColumnName="Entry_by" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Questions">
+      <EntityTypeMapping TypeName="Inv_StackModel.tbl_Questions">
+        <MappingFragment StoreEntitySet="tbl_Questions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Question_Description" ColumnName="Question_Description" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="Entry_By" ColumnName="Entry_By" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UserDetails">
+      <EntityTypeMapping TypeName="Inv_StackModel.tbl_UserDetails">
+        <MappingFragment StoreEntitySet="tbl_UserDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contact_no" ColumnName="Contact_no" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="About_Yourself" ColumnName="About_Yourself" />
+          <ScalarProperty Name="Keyskills" ColumnName="Keyskills" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Entry_By" ColumnName="Entry_By" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Add_question" FunctionName="Inv_StackModel.Store.Add_question" />
+    <FunctionImportMapping FunctionImportName="Login" FunctionName="Inv_StackModel.Store.Login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Inv_StackModel.Login_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="About_Yourself" ColumnName="About_Yourself" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Keyskills" ColumnName="Keyskills" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
