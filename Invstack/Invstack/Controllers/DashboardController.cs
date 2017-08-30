@@ -12,6 +12,7 @@ namespace Invstack.Controllers
         //
         // GET: /Dashboard/
         
+        [Route("Home")]
         public ActionResult Index()
         {
             return View();

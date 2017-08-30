@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Invstack.Models;
 namespace Invstack.Controllers
 {
+    
     public class LoginController : Controller
     {
         StackEntities dbContext = new StackEntities();
@@ -18,14 +19,16 @@ namespace Invstack.Controllers
         }
 
         [HttpPost]
+        [Route("Login")]
         public JsonResult LoginUser(tbl_UserDetails Obj_Login)
         {
-            var data = dbContext.tbl_UserDetails.Where(s => s.Employee_Id == Obj_Login.Employee_Id && s.Password == Obj_Login.Password).FirstOrDefault<tbl_UserDetails>();
+           var data = dbContext.tbl_UserDetails.Where(s => s.Employee_Id == Obj_Login.Employee_Id && s.Password == Obj_Login.Password).FirstOrDefault<tbl_UserDetails>();
            if(data != null)
            {
                Session["Username"] = data.Username;
            }
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+        
     }
 }

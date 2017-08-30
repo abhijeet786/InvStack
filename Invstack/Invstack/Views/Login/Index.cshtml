@@ -33,20 +33,21 @@
                         <h2>login Now</h2>
                         <form>
                             <div class="form-sub-w3">
-                                @*<input type="text" name="Username" placeholder="Username " required="" />*@
-                                @Html.TextBoxFor(l => l.Employee_Id, new { ng_Model = "User.Employee_Id", placeholder = "Employee Id" })
+                                <input type="text" name="Username" placeholder="Username " ng-model="User.Employee_Id" required="" />
+                              
                                 <div class="icon-w3">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            @Html.ValidationMessageFor(m => m.Employee_Id)
+                        
                             <div class="form-sub-w3">
-                                @Html.TextBoxFor(l => l.Password, new { ng_Model = "User.Password", placeholder = "Password" })
+                                <input type="password" name="Username" placeholder="Password " ng-model="User.Password" required="" />
+                              
                                 <div class="icon-w3">
                                     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            @Html.ValidationMessageFor(m => m.Password)
+                         
                             <p class="p-bottom-w3ls">Forgot Password?<a class href="#">  Click here</a></p>
                             <p class="p-bottom-w3ls1">New User?<a class href="#">  Register here</a></p>
                             <div class="clear"></div>

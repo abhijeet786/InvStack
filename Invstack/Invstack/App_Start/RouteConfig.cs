@@ -13,6 +13,7 @@ namespace Invstack
         {
            // routes.MapMvcAttributeRoutes();
             //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapMvcAttributeRoutes();
             routes.MapRoute(
                 name: "Dashboard",
                 url: "{controller}/{action}/{id}",

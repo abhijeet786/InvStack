@@ -58,12 +58,12 @@
 .controller('Login', function ($scope, $window, CrudService) {
     $scope.Login = function () {
       
-        var route = "/Login/LoginUser/";
+        var route = "Login/";
         var Login = CrudService.post(route, $scope.User);
         Login.then(function (response) {
             if (response.data.Username != null)
             {
-                $window.location.href = '/Dashboard/Index/';
+                $window.location.href = '/Home/';
             } else {
                 alert("Invalid Credentials");
             }

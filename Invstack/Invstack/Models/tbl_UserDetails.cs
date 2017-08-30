@@ -11,6 +11,7 @@ namespace Invstack.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class tbl_UserDetails
     {
@@ -22,7 +23,9 @@ namespace Invstack.Models
         }
 
         public int Id { get; set; }
+        [Required(ErrorMessage = "Please Enter Name")]
         public string Employee_Id { get; set; }
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
