@@ -10,9 +10,15 @@ namespace Invstack.Controllers
     {
         //
         // GET: /Article/
+        [Route("Article",Name="ArticleCustomRoute")]
         public ActionResult Index()
         {
             return View();
         }
+        //[Route("Comment")]
+        //public JsonResult Comment()
+        //{
+
+        //}
 	}
 }

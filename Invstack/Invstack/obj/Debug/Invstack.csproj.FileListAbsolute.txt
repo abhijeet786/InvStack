@@ -121,6 +121,6 @@ C:\git\InvStack\Invstack\Invstack\bin\Microsoft.Owin.Security.OAuth.xml
 C:\git\InvStack\Invstack\Invstack\bin\Microsoft.Owin.Security.Google.xml
 C:\git\InvStack\Invstack\Invstack\bin\Microsoft.Owin.Security.Twitter.xml
 C:\git\InvStack\Invstack\Invstack\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\git\InvStack\Invstack\Invstack\obj\Debug\Invstack.csprojResolveAssemblyReference.cache
 C:\git\InvStack\Invstack\Invstack\obj\Debug\Invstack.dll
 C:\git\InvStack\Invstack\Invstack\obj\Debug\Invstack.pdb
+C:\git\InvStack\Invstack\Invstack\obj\Debug\Invstack.csprojResolveAssemblyReference.cache

@@ -11,8 +11,7 @@ namespace Invstack.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_UserDetails
     {
         public tbl_UserDetails()
@@ -21,11 +20,9 @@ namespace Invstack.Models
             this.tbl_Comments = new HashSet<tbl_Comments>();
             this.tbl_Questions = new HashSet<tbl_Questions>();
         }
-
+    
         public int Id { get; set; }
-        [Required(ErrorMessage = "Please Enter Name")]
         public string Employee_Id { get; set; }
-        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
@@ -36,10 +33,9 @@ namespace Invstack.Models
         public byte[] Image { get; set; }
         public string Entry_By { get; set; }
         public Nullable<System.DateTime> Timestamp { get; set; }
-
+    
         public virtual ICollection<tbl_Articles> tbl_Articles { get; set; }
         public virtual ICollection<tbl_Comments> tbl_Comments { get; set; }
         public virtual ICollection<tbl_Questions> tbl_Questions { get; set; }
     }
-
 }
