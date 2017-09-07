@@ -12,8 +12,7 @@ namespace Invstack.Controllers
 
         StackEntities dbContext = new StackEntities();
 
-        //
-        // GET: /Questions/
+       
         [Route("Question", Name = "QuesCustomRoute")]
         public ActionResult Index()
         {
@@ -44,6 +43,15 @@ namespace Invstack.Controllers
             var Languages = dbContext.tbl_lang.ToList();
             return Json(Languages, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        [Route("Single")]
+        public JsonResult getSingleQues(int ID,string UserID)
+        {
+            var Question = dbContext.getSingleQuestion(ID, UserID);
+            return Json(Question, JsonRequestBehavior.AllowGet);
+        }
+        
 
     }
 }

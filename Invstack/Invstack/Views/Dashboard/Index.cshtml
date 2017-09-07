@@ -69,16 +69,16 @@
 </div>
 <!-- //banner -->
 <!-- banner-bottom -->
-<div class="banner-bottom">
+@*<div class="banner-bottom" ng-controller="DashboardQues">
     <ul id="flexiselDemo1">
-        <li>
+        <li ng-repeat="item in Ques">
             <div class="banner-bottom-grid">
                 <img src="~/images/1.jpg" alt=" " class="img-responsive" />
                 <p>
                     At vero eos et accusamus et iusto odio dignissimos ducimus
                     qui blanditiis praesentium voluptatum deleniti atque corrupti
                     quos dolores et quas molestias excepturi sint occaecati
-                    cupiditate non provident
+                    cupiditate non provident {{item.Title}}
                 </p>
                 <div class="more">
                     <a href="single.html" class="hvr-bounce-to-bottom sint">Read More</a>
@@ -114,8 +114,8 @@
 
         });
     </script>
-   
-</div>
+
+</div>*@
 <!-- //banner-bottom -->
 <!-- blog -->
 <div class="blog">
@@ -173,61 +173,28 @@
         <div class="sap_tabs">
             <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
                 <ul class="resp-tabs-list">
-                    <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab"><span>Popular</span></li>
-                    <li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab"><span>Recent</span></li>
+                    <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab"><span>Question</span></li>
+                    <li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab"><span>Popular</span></li>
                     <li class="resp-tab-item grid3" aria-controls="tab_item-2" role="tab"><span>Comments</span></li>
                     <div class="clear"></div>
                 </ul>
-                <div class="resp-tabs-container">
-                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                        <div class="facts">
+                <div class="resp-tabs-container" ng-controller="DashboardQues">
+                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0" >
+                        <div class="facts" ng-repeat="item in Ques">
                             <div class="tab_list">
                                 <a href="~/images/7-.jpg" class="b-link-stripe b-animate-go   swipebox" title="">
                                     <img src="~/images/7.jpg" alt=" " class="img-responsive" />
                                 </a>
                             </div>
                             <div class="tab_list1">
-                                <a href="#">excepturi sint occaecati</a>
-                                <p>June 30,2015 <span>Nam libero tempore, cum soluta nobis.</span></p>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="facts">
-                            <div class="tab_list">
-                                <a href="~/images/8-.jpg" class="b-link-stripe b-animate-go   swipebox" title="">
-                                    <img src="~/images/8.jpg" alt=" " class="img-responsive" />
+                                <a href="" ng-click="showQues(item.id,item.user_id)">
+                                    {{item.Username}}
+                                    <p>{{item.Timestamp}} <span>{{item.Title}}</span></p>
                                 </a>
                             </div>
-                            <div class="tab_list1">
-                                <a href="#">excepturi sint occaecati</a>
-                                <p>June 30,2015<span>Nam libero tempore, cum soluta nobis.</span></p>
-                            </div>
                             <div class="clearfix"> </div>
                         </div>
-                        <div class="facts">
-                            <div class="tab_list">
-                                <a href="~/images/9-.jpg" class="b-link-stripe b-animate-go   swipebox" title="">
-                                    <img src="~/images/9.jpg" alt=" " class="img-responsive" />
-                                </a>
-                            </div>
-                            <div class="tab_list1">
-                                <a href="#">excepturi sint occaecati</a>
-                                <p>June 30,2015<span>Nam libero tempore, cum soluta nobis.</span></p>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="facts">
-                            <div class="tab_list">
-                                <a href="~/images/10-.jpg" class="b-link-stripe b-animate-go   swipebox" title="">
-                                    <img src="~/images/10.jpg" alt=" " class="img-responsive" />
-                                </a>
-                            </div>
-                            <div class="tab_list1">
-                                <a href="#">excepturi sint occaecati</a>
-                                <p>June 30,2015<span>Nam libero tempore, cum soluta nobis.</span></p>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
+
                     </div>
                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
                         <div class="facts">

@@ -76,9 +76,7 @@
     var route = "Lang";
     var lang = CrudService.get(route);
     lang.then(function (response) {
-
         $scope.Languages = response.data;
-
     })
 
     $scope.SubmitQues = function () {
@@ -103,6 +101,7 @@
             }
         })
     }
+
 
 })
 
@@ -130,4 +129,24 @@
 
         }
     })
+    $scope.showQues = function (id, user_id) {
+        $scope.ID = id;
+        $scope.user_id = user_id;
+        var data = {
+            'ID': $scope.id,
+            'UserID': $scope.user_id
+        }
+        var route = "/Single";
+        var single = CrudService.getQuestion(route,$scope.ID,$scope.user_id );
+        single.then(function (response) {
+            if (response.data != null)
+            {
+                $scope.singlePageData = response.data;
+                console.log($scope.singlePageData); return;
+            }
+            
+        })
+    }
+
 })
+

@@ -183,6 +183,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\getQuestion_Result.cs">
+      <DependentUpon>InvStackModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getSingleQuestion_Result.cs">
+      <DependentUpon>InvStackModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\InvStackModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

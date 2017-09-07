@@ -21,7 +21,7 @@ namespace Invstack.Controllers
         [Route("getQues")]
         public JsonResult getTopQues()
         {
-            var Ques = dbContext.tbl_Questions.Select(Q => new { Q.id, Q.Title }).Take(6);
+            var Ques = dbContext.getQuestion();
             return Json(Ques, JsonRequestBehavior.AllowGet);
         }
     }

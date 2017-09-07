@@ -15,5 +15,14 @@
         });
         return Request;
     }
+    this.getQuestion = function(apiRoute,ID,User_ID)
+    {
+        var Request = $http({
+            method: 'Post',
+            url: apiRoute,
+            data: { 'ID': ID, 'UserID': User_ID }
+        });
+        return Request;
+    }
     
 });
